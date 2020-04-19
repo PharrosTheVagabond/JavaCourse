@@ -1,22 +1,24 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
-public class Main2 {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        NameAndAgeInfo info = new NameAndAgeInfo();
-        System.out.println("Введите ФИО и дату рождения в формате ДД.ММ.ГГГГ:");
-        String input = scanner.nextLine();
+        System.out.println("Введите имя файла, содержащего текст.");
+        String inputFileName = scanner.nextLine();
         scanner.close();
+        TxtLettersFrequency qwe = new TxtLettersFrequency(inputFileName, "output.txt");
         try {
-            info.parseData(input);
+            qwe.countFrequencyArray();
+            qwe.setOutputFile("output2.txt");
+            qwe.countFrequencyMap();
         }
-        catch (NumberFormatException ex1) {
-            System.out.println("Неверный формат введённой даты.");
+        catch (FileNotFoundException ex1) {
+            System.out.println("Ошибка открытия файла.");
         }
-        catch (ArrayIndexOutOfBoundsException ex2) {
-            System.out.println("Предоставлена неполная или неверная информация.");
+        catch (IOException ex2) {
+            System.out.println("Ошибка ввода/вывода.");
         }
-        System.out.println(info.getBirthdateString());
-        System.out.println(info.getInfo());
     }
 }
