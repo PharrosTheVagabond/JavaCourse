@@ -61,9 +61,9 @@ public class NameAndAgeInfo {
     public String getInfo() {
         String gender = "";
         if (patronymic.length() >= 3) {
-            if (patronymic.substring(patronymic.length() - 3).toLowerCase().equals("вна")) {
+            if (patronymic.substring(patronymic.length() - 2).toLowerCase().equals("на")) {
                 gender = "женщина, ";
-            } else if (patronymic.substring(patronymic.length() - 3).toLowerCase().equals("вич")) {
+            } else if (patronymic.substring(patronymic.length() - 2).toLowerCase().equals("ич")) {
                 gender = "мужчина, ";
             }
         }
