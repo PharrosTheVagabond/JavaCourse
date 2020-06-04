@@ -164,7 +164,8 @@ public class MainController {
     }
 
     private double HsbArbitraryValue(Color color) {
-        return Math.cos(Math.toRadians(color.getHue())) * 360 + color.getBrightness() + color.getSaturation();
+        return (Math.cos(Math.toRadians(color.getHue())) + Math.sin(Math.toRadians(color.getHue()))) *
+                180 + color.getBrightness() + color.getSaturation();
     }
 
     private void sort(Comparator<CustomImageView> comparator) {
