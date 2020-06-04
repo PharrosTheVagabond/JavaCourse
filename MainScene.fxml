@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+   <top>
+      <HBox spacing="10.0" BorderPane.alignment="TOP_LEFT">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <Button fx:id="loadButton" mnemonicParsing="false" onMouseClicked="#loadButtonClicked" text="Load Pictures" />
+         <MenuButton fx:id="sortMenuButton" mnemonicParsing="false" text="Sort by...">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#sortByName" text="Name" />
+               <MenuItem mnemonicParsing="false" onAction="#sortByDimensions" text="Dimensions" />
+               <MenuItem mnemonicParsing="false" onAction="#sortByFileSize" text="File size" />
+               <MenuItem mnemonicParsing="false" onAction="#sortByLastModified" text="Last modified date" />
+               <MenuItem mnemonicParsing="false" onAction="#sortBySimilarity" text="Similarity to..." />
+            </items>
+         </MenuButton>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <center>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" BorderPane.alignment="CENTER">
+         <TilePane fx:id="picturesPane" hgap="10.0" prefTileHeight="250.0" prefTileWidth="250.0" vgap="10.0">
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+         </TilePane>
+      </ScrollPane>
+   </center>
+   <bottom>
+      <HBox spacing="10.0" BorderPane.alignment="BOTTOM_CENTER">
+         <Label fx:id="bottomLabel" />
+         <ProgressBar fx:id="progressBar" progress="0.0" visible="false" />
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </HBox>
+   </bottom>
+</BorderPane>
