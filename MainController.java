@@ -157,15 +157,18 @@ public class MainController {
             for (int y = 0; y < height; y++) {
                 Color color1 = pixelReader1.getColor(x, y);
                 Color color2 = pixelReader2.getColor(x, y);
-                value += Math.abs(HsbArbitraryValue(color1) - HsbArbitraryValue(color2));
+                value += HsbArbitraryDistance(color1, color2);
             }
         }
         return value;
     }
 
-    private double HsbArbitraryValue(Color color) {
-        return (Math.cos(Math.toRadians(color.getHue())) + Math.sin(Math.toRadians(color.getHue()))) *
-                180 + color.getBrightness() + color.getSaturation();
+    private double HsbArbitraryDistance(Color color1, Color color2) {
+        double r1 = color1.getSaturation() * color1.getBrightness();
+        double r2 = color2.getSaturation() * color2.getBrightness();
+        return Math.pow(r1, 2) + Math.pow(r2, 2)
+                - 2 * r1 * r2 * Math.cos(Math.toRadians(color1.getHue()) - Math.toRadians(color2.getHue()))
+                + Math.pow(color1.getBrightness() - color2.getBrightness(), 2);
     }
 
     private void sort(Comparator<CustomImageView> comparator) {
